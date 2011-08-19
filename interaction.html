@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>User Interaction &mdash; alot v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="alot v0.1 documentation" href="index.html" />
+    <link rel="next" title="Getting Account information" href="accounts.html" />
+    <link rel="prev" title="Database Abstraction" href="db.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="accounts.html" title="Getting Account information"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="db.html" title="Database Abstraction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">alot v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="user-interaction">
+<h1>User Interaction<a class="headerlink" href="#user-interaction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="alot-ui-ui">
+<h2><a class="reference internal" href="#alot.ui.UI" title="alot.ui.UI"><tt class="xref py py-class docutils literal"><span class="pre">alot.ui.UI</span></tt></a><a class="headerlink" href="#alot-ui-ui" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="alot.ui.UI">
+<em class="property">class </em><tt class="descclassname">alot.ui.</tt><tt class="descname">UI</tt><a class="headerlink" href="#alot.ui.UI" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="alot.ui.UI.choice">
+<tt class="descname">choice</tt><big>(</big><em>message, choices={'yes': ['y'], 'no': ['n']}</em><big>)</big><a class="headerlink" href="#alot.ui.UI.choice" title="Permalink to this definition">¶</a></dt>
+<dd><p>prompt user to make a choice</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>message</strong> (<em>unicode</em>) &#8211; string to display before list of choices</li>
+<li><strong>choices</strong> (<em>str-&gt;list of keys</em>) &#8211; dict of possible choices</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.ui.UI.notify">
+<tt class="descname">notify</tt><big>(</big><em>message</em>, <em>priority='normal'</em>, <em>timeout=0</em>, <em>block=False</em><big>)</big><a class="headerlink" href="#alot.ui.UI.notify" title="Permalink to this definition">¶</a></dt>
+<dd><p>notify popup</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>message</strong> (<em>str</em>) &#8211; message to print</li>
+<li><strong>priority</strong> (<em>str</em>) &#8211; priority string, used to format the popup: currently,
+&#8216;normal&#8217; and &#8216;error&#8217; are defined. If you use &#8216;X&#8217; here,
+the attribute &#8216;notify_X&#8217; is used to format the popup.</li>
+<li><strong>timeout</strong> (<em>int</em>) &#8211; seconds until message disappears. Defaults to the value
+of &#8216;notify_timeout&#8217; in the general config section.
+A negative value means never time out.</li>
+<li><strong>block</strong> (<em>boolean</em>) &#8211; this notification blocks until a keypress is made</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.ui.UI.prompt">
+<tt class="descname">prompt</tt><big>(</big><em>prefix='&gt;'</em>, <em>text=u''</em>, <em>tab=0</em>, <em>completer=None</em><big>)</big><a class="headerlink" href="#alot.ui.UI.prompt" title="Permalink to this definition">¶</a></dt>
+<dd><p>prompt for text input</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>prefix</strong> (<em>str</em>) &#8211; text to print before the input field</li>
+<li><strong>text</strong> (<em>str</em>) &#8211; initial content of the input field</li>
+<li><strong>tab</strong> (<em>int</em>) &#8211; number of tabs to press initially
+(to select completion results)</li>
+<li><strong>completer</strong> (<cite>alot.completion.Completer</cite>) &#8211; completion object to use</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">User Interaction</a><ul>
+<li><a class="reference internal" href="#alot-ui-ui"><tt class="docutils literal"><span class="pre">alot.ui.UI</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="db.html"
+                        title="previous chapter">Database Abstraction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="accounts.html"
+                        title="next chapter">Getting Account information</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/interaction.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="accounts.html" title="Getting Account information"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="db.html" title="Database Abstraction"
+             >previous</a> |</li>
+        <li><a href="index.html">alot v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011 Patrick Totzke.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

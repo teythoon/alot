@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Account information &mdash; alot v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="alot v0.1 documentation" href="index.html" />
+    <link rel="prev" title="User Interaction" href="interaction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="interaction.html" title="User Interaction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">alot v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-account-information">
+<h1>Getting Account information<a class="headerlink" href="#getting-account-information" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="alot-account-accountmanager">
+<h2><a class="reference internal" href="#alot.account.AccountManager" title="alot.account.AccountManager"><tt class="xref py py-class docutils literal"><span class="pre">alot.account.AccountManager</span></tt></a><a class="headerlink" href="#alot-account-accountmanager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="alot.account.AccountManager">
+<em class="property">class </em><tt class="descclassname">alot.account.</tt><tt class="descname">AccountManager</tt><a class="headerlink" href="#alot.account.AccountManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Easy access to all known accounts</p>
+<dl class="method">
+<dt id="alot.account.AccountManager.get_accounts">
+<tt class="descname">get_accounts</tt><big>(</big><big>)</big><a class="headerlink" href="#alot.account.AccountManager.get_accounts" title="Permalink to this definition">¶</a></dt>
+<dd><p>return known accounts</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body">list of <cite>account.Account</cite></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.account.AccountManager.get_account_by_address">
+<tt class="descname">get_account_by_address</tt><big>(</big><em>address</em><big>)</big><a class="headerlink" href="#alot.account.AccountManager.get_account_by_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns account for given email address</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>address</strong> (<em>string</em>) &#8211; address to look up</td>
+</tr>
+<tr class="field"><th class="field-name">Return type:</th><td class="field-body"><cite>account.Account</cite> or None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.account.AccountManager.get_main_addresses">
+<tt class="descname">get_main_addresses</tt><big>(</big><big>)</big><a class="headerlink" href="#alot.account.AccountManager.get_main_addresses" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns addresses of known accounts without its aliases</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.account.AccountManager.get_addresses">
+<tt class="descname">get_addresses</tt><big>(</big><big>)</big><a class="headerlink" href="#alot.account.AccountManager.get_addresses" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns addresses of known accounts including all their aliases</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="alot-account-account">
+<h2><a class="reference internal" href="#alot.account.Account" title="alot.account.Account"><tt class="xref py py-class docutils literal"><span class="pre">alot.account.Account</span></tt></a><a class="headerlink" href="#alot-account-account" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="alot.account.Account">
+<em class="property">class </em><tt class="descclassname">alot.account.</tt><tt class="descname">Account</tt><a class="headerlink" href="#alot.account.Account" title="Permalink to this definition">¶</a></dt>
+<dd><p>Datastructure that represents an email account. It manages
+this account&#8217;s settings, can send and store mails to
+maildirs (drafts/send)</p>
+<dl class="attribute">
+<dt id="alot.account.Account.address">
+<tt class="descname">address</tt><a class="headerlink" href="#alot.account.Account.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>this accounts main email address</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alot.account.Account.aliases">
+<tt class="descname">aliases</tt><a class="headerlink" href="#alot.account.Account.aliases" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of alternative addresses</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alot.account.Account.gpg_key">
+<tt class="descname">gpg_key</tt><a class="headerlink" href="#alot.account.Account.gpg_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>gpg fingerprint. CURRENTLY IGNORED</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alot.account.Account.realname">
+<tt class="descname">realname</tt><a class="headerlink" href="#alot.account.Account.realname" title="Permalink to this definition">¶</a></dt>
+<dd><p>real name used to format from-headers</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.account.Account.send_mail">
+<tt class="descname">send_mail</tt><big>(</big><em>mail</em><big>)</big><a class="headerlink" href="#alot.account.Account.send_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>sends given mail</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mail</strong> (<cite>email.message.Message</cite> or string) &#8211; the mail to send</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">None if successful and a string with the reason
+for failure otherwise</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alot.account.Account.signature">
+<tt class="descname">signature</tt><a class="headerlink" href="#alot.account.Account.signature" title="Permalink to this definition">¶</a></dt>
+<dd><p>path to a signature file to append to outgoing mails.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="alot.account.Account.signature_filename">
+<tt class="descname">signature_filename</tt><a class="headerlink" href="#alot.account.Account.signature_filename" title="Permalink to this definition">¶</a></dt>
+<dd><p>filename of signature file in attachment</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.account.Account.store_draft_mail">
+<tt class="descname">store_draft_mail</tt><big>(</big><em>mail</em><big>)</big><a class="headerlink" href="#alot.account.Account.store_draft_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>stores mail as draft if draft_box is set</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mail</strong> (<cite>email.message.Message</cite> or string) &#8211; the mail to store</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.account.Account.store_mail">
+<tt class="descname">store_mail</tt><big>(</big><em>mbx</em>, <em>mail</em><big>)</big><a class="headerlink" href="#alot.account.Account.store_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>stores given mail in mailbox. if mailbox is maildir, set the S-flag.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mbx</strong> (<cite>mailbox.Mailbox</cite>) &#8211; mailbox to use</li>
+<li><strong>mail</strong> (<cite>email.message.Message</cite> or string) &#8211; the mail to store</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.account.Account.store_sent_mail">
+<tt class="descname">store_sent_mail</tt><big>(</big><em>mail</em><big>)</big><a class="headerlink" href="#alot.account.Account.store_sent_mail" title="Permalink to this definition">¶</a></dt>
+<dd><p>stores mail in send-store if sent_box is set</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mail</strong> (<cite>email.message.Message</cite> or string) &#8211; the mail to store</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting Account information</a><ul>
+<li><a class="reference internal" href="#alot-account-accountmanager"><tt class="docutils literal"><span class="pre">alot.account.AccountManager</span></tt></a></li>
+<li><a class="reference internal" href="#alot-account-account"><tt class="docutils literal"><span class="pre">alot.account.Account</span></tt></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="interaction.html"
+                        title="previous chapter">User Interaction</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/accounts.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="interaction.html" title="User Interaction"
+             >previous</a> |</li>
+        <li><a href="index.html">alot v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011 Patrick Totzke.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
