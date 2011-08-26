@@ -1,0 +1,5 @@
+
+Getting Settings
+================
+
+`alot.settings` defines a customized ConfigParser that, apart from the default interface offers

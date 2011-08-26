@@ -74,6 +74,34 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="alot.ui.UI.commandprompt">
+<tt class="descname">commandprompt</tt><big>(</big><em>startstring</em><big>)</big><a class="headerlink" href="#alot.ui.UI.commandprompt" title="Permalink to this definition">¶</a></dt>
+<dd><p>prompt for a commandline and interpret/apply it upon enter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>startstring</strong> (<em>str</em>) &#8211; initial text in edit part</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="alot.ui.UI.interpret_commandline">
+<tt class="descname">interpret_commandline</tt><big>(</big><em>cmdline</em><big>)</big><a class="headerlink" href="#alot.ui.UI.interpret_commandline" title="Permalink to this definition">¶</a></dt>
+<dd><p>interpret and apply a commandstring</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cmdline</strong> (<em>str</em>) &#8211; command string to apply</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="alot.ui.UI.notify">
 <tt class="descname">notify</tt><big>(</big><em>message</em>, <em>priority='normal'</em>, <em>timeout=0</em>, <em>block=False</em><big>)</big><a class="headerlink" href="#alot.ui.UI.notify" title="Permalink to this definition">¶</a></dt>
 <dd><p>notify popup</p>
@@ -99,7 +127,7 @@ A negative value means never time out.</li>
 
 <dl class="method">
 <dt id="alot.ui.UI.prompt">
-<tt class="descname">prompt</tt><big>(</big><em>prefix='&gt;'</em>, <em>text=u''</em>, <em>tab=0</em>, <em>completer=None</em><big>)</big><a class="headerlink" href="#alot.ui.UI.prompt" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">prompt</tt><big>(</big><em>prefix='&gt;'</em>, <em>text=u''</em>, <em>completer=None</em>, <em>tab=0</em>, <em>history=</em><span class="optional">[</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#alot.ui.UI.prompt" title="Permalink to this definition">¶</a></dt>
 <dd><p>prompt for text input</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -108,9 +136,10 @@ A negative value means never time out.</li>
 <tr class="field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>prefix</strong> (<em>str</em>) &#8211; text to print before the input field</li>
 <li><strong>text</strong> (<em>str</em>) &#8211; initial content of the input field</li>
+<li><strong>completer</strong> (<cite>alot.completion.Completer</cite>) &#8211; completion object to use</li>
 <li><strong>tab</strong> (<em>int</em>) &#8211; number of tabs to press initially
 (to select completion results)</li>
-<li><strong>completer</strong> (<cite>alot.completion.Completer</cite>) &#8211; completion object to use</li>
+<li><strong>history</strong> (<em>list of str</em>) &#8211; history to be used for up/down keys</li>
 </ul>
 </td>
 </tr>
