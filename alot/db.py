@@ -54,6 +54,7 @@ class DBManager(object):
         self.ro = ro
         self.path = path
         self.writequeue = deque([])
+        self.db = Database(path=self.path, mode=Database.MODE.READ_ONLY)
 
     def flush(self):
         """
@@ -151,15 +152,12 @@ class DBManager(object):
 
     def get_message(self, mid):
         """returns the message with given id as alot.message.Message object"""
-        mode = Database.MODE.READ_ONLY
-        db = Database(path=self.path, mode=mode)
-        msg = db.find_message(mid)
+        msg = self.db.find_message(mid)
         return Message(self, msg)
 
     def get_all_tags(self):
         """returns all tags as list of strings"""
-        db = Database(path=self.path)
-        return [t for t in db.get_all_tags()]
+        return [t for t in self.db.get_all_tags()]
 
     def query(self, querystring):
         """creates notmuch.Query objects on demand
@@ -169,9 +167,7 @@ class DBManager(object):
         :returns:  notmuch.Query -- the query object.
 
         """
-        mode = Database.MODE.READ_ONLY
-        db = Database(path=self.path, mode=mode)
-        return db.create_query(querystring)
+        return self.db.create_query(querystring)
 
 
 class Thread(object):
@@ -184,19 +180,17 @@ class Thread(object):
         """
         self._dbman = dbman
         self._id = thread.get_thread_id()
-        self.refresh(thread)
+        self._thread = thread
+        self.refresh()
 
-    def refresh(self, thread=None):
-        if not thread:
-            query = self._dbman.query('thread:' + self._id)
-            thread = query.search_threads().next()
-        self._total_messages = thread.get_total_messages()
-        self._authors = thread.get_authors()
-        self._subject = thread.get_subject()
-        ts = thread.get_oldest_date()
+    def refresh(self):
+        self._total_messages = self._thread.get_total_messages()
+        self._authors = self._thread.get_authors()
+        self._subject = self._thread.get_subject()
+        ts = self._thread.get_oldest_date()
         self._oldest_date = datetime.fromtimestamp(ts)
-        self._newest_date = datetime.fromtimestamp(thread.get_newest_date())
-        self._tags = set([t for t in thread.get_tags()])
+        self._newest_date = datetime.fromtimestamp(self._thread.get_newest_date())
+        self._tags = set([t for t in self._thread.get_tags()])
         self._messages = {}  # this maps messages to its children
         self._toplevel_messages = []
 
