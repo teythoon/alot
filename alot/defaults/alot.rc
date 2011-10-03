@@ -15,7 +15,9 @@ bufferclose_focus_offset=-1
 # number of colours your terminal supports
 colourmode = 256
 
-# fill threadline with message content
+# fill threadline with message content (boolean or 'summarize')
+# If you have libots and guess-language, you can set this to
+# 'summarize' to get a summary of the thread in five words.
 display_content_in_threadline = False
 
 # headers that get displayed by default

@@ -27,13 +27,26 @@ from helper import pretty_datetime
 from helper import tag_cmp
 import message
 
+try:
+    from .lib.ots import OtsArticle
+except ImportError as e:
+    have_ots = False
+    logging.warn('Importing Open Text Summarizer library bindings failed')
+else:
+    have_ots = True
 
 class ThreadlineWidget(urwid.AttrMap):
     def __init__(self, tid, dbman):
         self.dbman = dbman
         self.thread = dbman.get_thread(tid)
         self.tag_widgets = []
-        self.display_content = config.getboolean('general',
+        if config.get('general', 'display_content_in_threadline') == 'summarize':
+            if have_ots:
+                self.display_content = 'summarize'
+            else:
+                self.display_content = False
+        else:
+            self.display_content = config.getboolean('general',
                                     'display_content_in_threadline')
         self.rebuild()
         urwid.AttrMap.__init__(self, self.columns,
@@ -77,7 +90,17 @@ class ThreadlineWidget(urwid.AttrMap):
             msgs = self.thread.get_messages().keys()
             msgs.sort()
             lastcontent = ' '.join([m.get_text_content() for m in msgs])
-            contentstring = lastcontent.replace('\n', ' ').strip()
+
+            import string
+            if self.display_content == 'summarize':
+                ots_article = OtsArticle()
+                ots_article.load_dictionary('de')
+                ots_article.parse(filter(lambda c: c not in string.punctuation, lastcontent))
+                ots_article.grade()
+                contentstring = '[%s]' % ' '.join(filter(None, ots_article.title))
+            else:
+                contentstring = lastcontent.replace('\n', ' ').strip()
+
             self.content_w = urwid.AttrMap(urwid.Text(contentstring,
                                                       wrap='clip'),
                                            'threadline_content')
